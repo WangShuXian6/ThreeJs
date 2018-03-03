@@ -1,0 +1,42 @@
+{
+  "name": "100",
+  "version": "1.0.0",
+  "description": "小猫快跳",
+  "main": "game.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test1": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
+    "test": "grunt && cross-env NODE_ENV=test nyc mocha"
+  },
+  "author": "wangshuxian6",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^20.1.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "mocha": "^5.0.1",
+    "mochawesome": "^3.0.2",
+    "nyc": "^11.4.1",
+    "typescript": "^2.7.2"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
+}
