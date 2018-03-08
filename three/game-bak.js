@@ -137,27 +137,27 @@ function creatModel(){
     //const model = "http://black.xinliu.org/obj/1.json"
     //const model = "http://black.xinliu.org/obj/cat-run.json"
     const model = "http://black.xinliu.org/obj/cat2.json"
-    var loader = new THREE.JSONLoader();
-    loader.load(model, function (model, mat) {
+    let modelLoader = new THREE.JSONLoader()
+    modelLoader.load(model,
+        function(geometry, materials){
+            mesh = new THREE.Mesh(geometry, materials[0])
+            mesh.scale.set(1, 1, 1)
+            mesh.rotation.x = 50
+            scene.add(mesh)
+            console.log('模型载入完成')
 
-        var mat = new THREE.MeshLambertMaterial({color: 0xF0C8C9, skinning: true});
-        mesh = new THREE.SkinnedMesh(model, mat);
-
-        var animation = new THREE.Animation(mesh, model.animation);
-
-        mesh.rotation.x = 0.5 * Math.PI;
-        mesh.rotation.z = 0.7 * Math.PI;
-        scene.add(mesh);
-
-        helper = new THREE.SkeletonHelper(mesh);
-        helper.material.linewidth = 2;
-        helper.visible = false;
-        scene.add(helper);
-
-// start the animation
-        animation.play();
-
-    });
+            /* 允许渲染模型 */
+            preLoadDone = true
+        },
+        // onProgress callback
+        function (xhr) {
+            console.log( (xhr.loaded / xhr.total * 100) + '% 已载入' )
+        },
+        // onError callback
+        function(err) {
+            console.log('载入出错', err.target.status)
+        }
+    );
 }
 
 AirPlane=function(){

@@ -1,5 +1,6 @@
 import './lib/weapp-adapter'
-import * as THREE from './lib/three.js'
+import * as THREE from './lib/Three.js'
+//import THREE from './lib/three.js'
 require('lib/OrbitControls')
 //const canvas=wx.createCanvas()
 let screenWidth,screenHeight,aspect
@@ -135,8 +136,8 @@ function creatModel(){
     //const model = "https://indienova.com/farm/files/indienova-logo.json"
     //const model = "http://black.xinliu.org/obj/indienova-logo.json"
     //const model = "http://black.xinliu.org/obj/1.json"
-    //const model = "http://black.xinliu.org/obj/cat-run.json"
-    const model = "http://black.xinliu.org/obj/cat2.json"
+    const model = "http://black.xinliu.org/obj/cat-run3.json"
+    //const model = "http://black.xinliu.org/obj/cat2.json"
     var loader = new THREE.JSONLoader();
     loader.load(model, function (model, mat) {
 
